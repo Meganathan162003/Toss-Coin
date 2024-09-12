@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icon.webp" type="image/x-icon">
+    <title>Coin Toss</title>
+    <style>
+
+        
+        body{
+            background:#16D9EB;
+            height: 100vh;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+        }
+        .con{
+            position: relative;
+            display: flex;
+            flex-direction: column; 
+            gap: 5px;
+            padding: 30px;
+            background: #F9F7F3;
+            border-radius: 7px;
+        }
+        .btn{
+                font-weight: bolder;
+                outline: none;
+                border: none;
+                padding:10px;
+                margin: 20px;
+                cursor: pointer;
+                background:#00b3c4;
+                color: aliceblue;
+                border-radius: 5px;
+        }
+         #filp:disabled{
+            background:rgb(230, 106, 106);
+        }     
+        h2{
+            color: #00a0d6;
+            font-size:x-large;
+            text-align: center;
+        }
+        .btns{
+            display: flex;
+        }
+        .para{
+            text-align: right;
+        }
+        #coin{
+            position: relative;
+            margin: 0 auto;
+            width: 150px;
+            height: 150px; 
+            transform-style: preserve-3d;
+            /*animation: heads 3s forwards;*/     
+            /*animation: tails 3s forwards;*/     
+        }
+        #coin svg{
+            width: 150px;
+            text-align: center;
+        }
+        .heads,.tails{
+            margin: 0 auto;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;              /*new*/  
+        }
+        .tails{
+            transform: rotateX(180deg);
+        }
+
+        @keyframes heads{
+              0%{ transform: rotateX(0)}
+            100%{ transform: rotateX(1800deg)}                  /* 10times*/   
+          }     
+        @keyframes tails{
+              0%{ transform: rotateX(0) }
+            100%{ transform: rotateX(1980deg)}                    /* 11times*/      
+        }          
+    </style>
+
+</head>
+<body>
+<div class="con">
+    <h2>Toss a Coin</h2>
+        
+    <div class="para">
+    <p id="hcount">Heads: 0</p>
+    <p id="tcount">Tails: 0</p>
+    </div>
+     
+    <div id="coin">
+        <!-- heads img -->
+        <div class="heads">
+            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+            <title>heads</title>
+            <g>
+              <path d="M114.6,60a54.61206,54.61206,0,0,1-102,27.108,53.80039,53.80039,0,0,1-5.988-15.612A54.94484,54.94484,0,0,1,5.4,60,54.63072,54.63072,0,0,1,73.284,7.032a53.6595,53.6595,0,0,1,15.384,6.504A54.62611,54.62611,0,0,1,114.6,60Z" style="fill: #ffde50"/>
+              <path d="M105,60a44.98374,44.98374,0,0,1-42.684,44.94H62.28c-.756.036-1.512.06-2.28.06a45.00313,45.00313,0,0,1-7.716-89.34h.036A44.98939,44.98939,0,0,1,105,60Z" style="fill: #f68e00"/>
+              <path d="M99.6,60.6a44.99555,44.99555,0,0,1-37.284,44.34H62.28c-.756.036-1.512.06-2.28.06a45.00313,45.00313,0,0,1-7.716-89.34h.036c.756-.036,1.512-.06,2.28-.06a44.98562,44.98562,0,0,1,45,45Z" style="fill: #faa300"/>
+              <path d="M99.804,22.59595l-6.78,6.78-3.096,3.096L29.376,93.024l-6.78,6.78A54.42023,54.42023,0,0,1,13.8,88.308,53.80039,53.80039,0,0,1,7.812,72.696,54.94484,54.94484,0,0,1,6.6,61.2,54.63072,54.63072,0,0,1,74.484,8.232a53.6595,53.6595,0,0,1,15.384,6.504A54.36778,54.36778,0,0,1,99.804,22.59595Z" style="fill: #fff;opacity: 0.14"/>
+              <g>
+                <text transform="translate(23.29687 67.95869)" style="font-size: 21.072948455810547px;fill: #b96b00;font-family: Roboto-Bold, Roboto;font-weight: 700;letter-spacing: 0.04397855451710463em">HEADS</text>
+                <text transform="translate(24.49658 69.1584)" style="font-size: 21.072948455810547px;fill: #ffea94;font-family: Roboto-Bold, Roboto;font-weight: 700;letter-spacing: 0.04397855451710463em">HEADS</text>
+              </g>
+            </g>
+            </svg>
+          </div>
+        <!-- tails img           -->
+        <div class="tails"> 
+             <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+            <title>heads</title>
+            <g>
+              <path d="M114.6,60a54.61206,54.61206,0,0,1-102,27.108,53.80039,53.80039,0,0,1-5.988-15.612A54.94484,54.94484,0,0,1,5.4,60,54.63072,54.63072,0,0,1,73.284,7.032a53.6595,53.6595,0,0,1,15.384,6.504A54.62611,54.62611,0,0,1,114.6,60Z" style="fill: #ffde50"/>
+              <path d="M105,60a44.98374,44.98374,0,0,1-42.684,44.94H62.28c-.756.036-1.512.06-2.28.06a45.00313,45.00313,0,0,1-7.716-89.34h.036A44.98939,44.98939,0,0,1,105,60Z" style="fill: #f68e00"/>
+              <path d="M99.6,60.6a44.99555,44.99555,0,0,1-37.284,44.34H62.28c-.756.036-1.512.06-2.28.06a45.00313,45.00313,0,0,1-7.716-89.34h.036c.756-.036,1.512-.06,2.28-.06a44.98562,44.98562,0,0,1,45,45Z" style="fill: #faa300"/>
+              <path d="M99.804,22.59595l-6.78,6.78-3.096,3.096L29.376,93.024l-6.78,6.78A54.42023,54.42023,0,0,1,13.8,88.308,53.80039,53.80039,0,0,1,7.812,72.696,54.94484,54.94484,0,0,1,6.6,61.2,54.63072,54.63072,0,0,1,74.484,8.232a53.6595,53.6595,0,0,1,15.384,6.504A54.36778,54.36778,0,0,1,99.804,22.59595Z" style="fill: #fff;opacity: 0.14"/>
+              <g>
+                <text transform="translate(28.09668 67.95879)" style="font-size: 21.072948455810547px;fill: #b96b00;font-family: Roboto-Bold, Roboto;font-weight: 700;letter-spacing: -0.014574557845763338em">T<tspan x="12.72949" y="0" style="letter-spacing: 0.04397855451710463em">AILS</tspan></text>
+                <text transform="translate(29.29687 69.15898)" style="font-size: 21.072948455810547px;fill: #ffea94;font-family: Roboto-Bold, Roboto;font-weight: 700;letter-spacing: -0.014574557845763338em">T<tspan x="12.72949" y="0" style="letter-spacing: 0.04397855451710463em">AILS</tspan></text>
+              </g>
+            </g>
+             </svg> 
+        </div>
+    </div>
+
+      <div class="btns">
+      <button class="btn" id="filp">Filp Coin</button>
+      <button class="btn" id="reset">Reset</button>
+      </div>
+    </div>
+
+ 
+    
+      <script>
+        var heads = 0;
+        var tails = 0;
+        var coin = document.getElementById("coin");
+        var filp = document.getElementById("filp");
+        var reset = document.getElementById("reset");
+        var audio = new Audio('coin.mp3')
+
+        filp.addEventListener("click",()=>{
+            audio.play();
+            let i = Math.floor(Math.random()*2);              //it returns 0 and 1.
+            coin.style.animation="none";
+            
+            if(i==0){
+                setTimeout(()=>{coin.style.animation="heads 3s forwards"});
+                heads++;
+                
+            }else{
+                setTimeout(()=>{coin.style.animation="tails 3s forwards"});
+                tails++;
+            }
+            setTimeout(update,3000);             //count++
+            disable();                          //button disable 
+            
+        })
+
+        function update(){
+                document.getElementById("hcount").innerHTML=`Heads:  ${heads}`;
+                document.getElementById("tcount").innerHTML=`Tails:  ${tails}`;
+        }
+
+        function disable(){
+            filp.disabled=true;
+            setTimeout(()=>{filp.disabled=false},3000)
+        }
+
+        reset.addEventListener("click",()=>{
+            coin.style="transform:rotateX(0)";
+            heads=0;
+            tails=0;
+            update();
+        })
+        
+          
+
+ 
+      </script>
+</body>
+</html>
